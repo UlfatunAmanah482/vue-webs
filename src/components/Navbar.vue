@@ -17,7 +17,7 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <router-link class="nav-link" to="/keranjang">
+            <router-link class="nav-link" to="/">
               Keranjang
               <img src="https://img.icons8.com/external-pixer-icons-pack-dmitry-mirolyubov/44/000000/external-cart-retail-pixer-icons-pack-dmitry-mirolyubov.png"/>
             </router-link>

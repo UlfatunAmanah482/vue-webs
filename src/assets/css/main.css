@@ -5,3 +5,8 @@
 .router-link-exact-active {
     font-weight: bold;
 }
+
+.btn-success {
+    background: #42B9A1;
+    border-color: #42B9A1;
+}

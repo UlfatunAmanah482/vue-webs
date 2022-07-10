@@ -1,10 +1,15 @@
 <template>
-  <div class="row">
+  <div class="row mt-4 justify-content-center align-items-center">
     <div class="col">
       <h2><strong>Delicious Food Menu, </strong> <br> In Your Gadget</h2>
+      <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
+      <button class="btn btn-lg btn-success">
+        <img src="https://img.icons8.com/material-outlined/24/FFFFFF/right.png"/>
+        Pesan
+      </button>
     </div>
     <div class="col">
-
+      <img src="../assets/images/img-hero.png" alt="hero" style="width: 100%" >
     </div>
   </div>
 </template>
