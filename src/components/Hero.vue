@@ -1,6 +1,6 @@
 <template>
-  <div class="row mt-4 justify-content-center align-items-center">
-    <div class="col">
+  <div class="hero row mt-4 justify-content-center align-items-center">
+    <div class="col-md-6 mb-4">
       <h2><strong>Delicious Food Menu, </strong> <br> In Your Gadget</h2>
       <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
       <button class="btn btn-lg btn-success">
@@ -8,7 +8,7 @@
         Pesan
       </button>
     </div>
-    <div class="col">
+    <div class="col-md-6 mb-4">
       <img src="../assets/images/img-hero.png" alt="hero" style="width: 100%" >
     </div>
   </div>
