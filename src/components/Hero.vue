@@ -3,10 +3,10 @@
     <div class="col-md-6 mb-4">
       <h2><strong>Delicious Food Menu, </strong> <br> In Your Gadget</h2>
       <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
-      <button class="btn btn-lg btn-success">
+      <router-link class="btn btn-lg btn-success" to="/foods">
         <img src="https://img.icons8.com/material-outlined/24/FFFFFF/right.png"/>
         Pesan
-      </button>
+      </router-link>
     </div>
     <div class="col-md-6 mb-4">
       <img src="../assets/images/img-hero.png" alt="hero" style="width: 100%" >

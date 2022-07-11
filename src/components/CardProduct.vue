@@ -4,10 +4,10 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.nama }}</h5>
       <p class="card-text">Harga: {{ product.harga }}</p>
-      <a href="#" class="btn btn-success">
+      <router-link :to="'foods/' + product.id" class="btn btn-success">
         <img src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v1.png"/>
         Pesan
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
