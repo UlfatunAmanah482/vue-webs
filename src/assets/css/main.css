@@ -35,6 +35,10 @@
     color: black;
 }
 
+.img-fluid {
+    border-radius: 15px;
+}
+
 @media screen and (max-width: 680px){
     .hero {
         display: flex;
