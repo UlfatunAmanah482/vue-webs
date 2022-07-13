@@ -55,15 +55,22 @@
                 <td>{{ cart.jumlah_pemesanan }}</td>
                 <td>Rp. {{ cart.products.harga }}</td>
                 <td>
-                  <strong>Rp. {{ cart.products.harga * cart.jumlah_pemesanan }}</strong>
+                  <strong
+                    >Rp.
+                    {{ cart.products.harga * cart.jumlah_pemesanan }}</strong
+                  >
                 </td>
                 <td>
-                  <img src="https://img.icons8.com/ios-glyphs/30/E74C3C/trash--v1.png" @click="deleteItem(cart.id)" style="cursor: pointer" />
+                  <img
+                    src="https://img.icons8.com/ios-glyphs/30/E74C3C/trash--v1.png"
+                    @click="deleteItem(cart.id)"
+                    style="cursor: pointer"
+                  />
                 </td>
               </tr>
 
               <tr>
-                <td colspan="6"  align="right">
+                <td colspan="6" align="right">
                   <strong>Total Harga:</strong>
                 </td>
                 <td align="center">
@@ -73,6 +80,39 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <div class="row mt-3 justify-content-end">
+        <div class="col-md-4">
+          <form class="mt-4" v-on:submit.prevent>
+            <div class="form-group mb-3">
+              <label for="nama" class="form-label"
+                >Nama</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                v-model="order.nama"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="noMeja" class="form-label"
+                >Nomor Meja</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                v-model="order.noMeja"
+              />
+            </div>
+            <button type="submit" class="btn btn-success float-end" @click="checkout">
+              <img
+                src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v1.png"
+              />
+              Pesan
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -90,23 +130,44 @@ export default {
   },
   data() {
     return {
-      carts: []
-    }
+      carts: [],
+      order: {}
+    };
   },
   methods: {
-    setCarts(data){
+    setCarts(data) {
       this.carts = data;
     },
-    deleteItem(id){
+    deleteItem(id) {
       axios
-        .delete("http://localhost:3000/carts/"+id)
+        .delete("http://localhost:3000/carts/" + id)
         .then((res) => console.log("success delete item"))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
       axios
         .get("http://localhost:3000/carts")
         .then((res) => this.setCarts(res.data))
         .catch((err) => console.log(err));
+    },
+    checkout(){
+      if(this.order.nama && this.order.noMeja){
+        this.order.carts = this.carts;
+        axios
+          .post("http://localhost:3000/orders", this.order)
+          .then(() => {
+            // Hapus semua keranjang
+            this.carts.map(function(item) {
+              return axios
+                .delete("http://localhost:3000/carts/" + item.id)
+                .then(() => console.log("success order"))
+                .catch((err) => console.log(err))
+            })
+            this.$router.push({ path: "/success-order" })
+          })
+          .catch((err) => console.log(err));
+      } else {
+        console.log("please fill the content first!");
+      }
     }
   },
   mounted() {
@@ -116,12 +177,12 @@ export default {
       .catch((err) => console.log(err));
   },
   computed: {
-    totalHarga(){
+    totalHarga() {
       return this.carts.reduce((items, data) => {
-        return items + data.products.harga * data.jumlah_pemesanan
-      }, 0)
-    }
-  }
+        return items + data.products.harga * data.jumlah_pemesanan;
+      }, 0);
+    },
+  },
 };
 </script>
 
